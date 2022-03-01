@@ -5,14 +5,14 @@ author: "Lizbeth Rojas"
 date: '2022-02-26'
 output:
   html_document:
-  
-    self-contained: true
-    fig_height: 7
-    fig_width: 9
+    mathjax: "http://example.com/MathJax.js"
+    self_contained: true
+    fig_height: 6
+    fig_width: 8
     theme: journal
     highlight: zenburn
     toc: yes
-    toc_depth: 4
+    toc_depth: 3
     toc_float:
       collapsed: no
       smooth_scroll: yes
