@@ -1,0 +1,319 @@
+---
+title: "DEBER_INTRODUCCION R"
+subtitle: 'BIOINFORMATICA-G01'
+author: "Lizbeth Rojas"
+date: '2022-02-26'
+output:
+  html_document:
+  
+    self-contained: true
+    fig_height: 7
+    fig_width: 9
+    theme: journal
+    highlight: zenburn
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+      
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+[](https://www.google.com/url?sa=i&url=https%3A%2F%2Fikiam.edu.ec%2Fapp%2Findex.html&psig=AOvVaw0IngryuklP0W5NNsl15RUP&ust=1646000794930000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLDL3tfCnvYCFQAAAAAdAAAAABAt)
+
+Lizbeth Rojas - `lizbeth.rojas@est.ikiam.edu.ec` - Universidad Regional Amazónica IKIAM, Tena, Napo,Ecuador
+
+# CONTENIDO
+
+
+# TAREA 1 - TIPO DE DATOS
+
+
+## EJERCICIO a
+
+### Crear un identificador de nombre "ciudad" y asigne como valor el nombre de alguna ciudad
+
+ciudad= "Tena"
+
+print(ciudad)
+
+## EJERCICIO b
+
+### Crear un identificador de nombre "pais_andes" y asigne como valor los nombres de los países por donde cruza la cordillera de Los Andes
+
+pais_andes=(c("Venezuela","Argentina", "Colombia","Ecuador","Peru","Bolivia","Chile")) 
+
+print(pais_andes)
+
+
+## EJERCICIO c
+
+### Crear un dataframe con 12 eventos (files) y 5 variables (columnas), cada columna debe tener diferentes tipos de datos (entero, decimal,caracter, logico)
+
+
+nombre=c("Luis","Carlos","Karla", "Angel","Maria","Denis","Liz","Erik","Luisa","Bolivar","Alex","Ariel")
+
+sexo=c("masculino", "masculino", "femenino", "masculino", "femenino", "masculino", "femenino", "masculino", "femenino", "masculino", "masculino", "masculino")
+
+edad=c(15,12,15,16,12,13,13,12,11,12,12,13)
+
+estatura=c(1.45,1.30,1.34,1.50,1.42,1.40,1.30,1.33,1.44,1.40,1.29,1.35)
+
+aprueba.curso=c(TRUE, FALSE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,TRUE)
+
+ejercicio3=data.frame(nombre,sexo,edad,estatura, aprueba.curso)
+
+structure(ejercicio3)
+
+
+## EJERCICIO d
+
+### Cargue el dataset "DNase" e identifique su estructura. Extraiga (subset) los datos que cumplan con las condiciones de: 
+
+DNase
+
+print(head(DNase))
+
+str(DNase)
+
+####   1. "conc" (concentracion) entre 0.1 y 0.2
+
+conc_DNase = subset(DNase, conc >= 0.1 & conc <= 0.2)
+print(conc_DNase)
+
+####   2. "Run" diferente a 2, "conc" mayor a 0.2 y "density" menor o igual a 1.0
+
+run_DNase = subset(DNase, Run != 5 & conc > 0.2 & density <= 1.0)
+print(run_DNase)
+
+
+
+
+________________________________________________________________________________
+
+
+
+# TAREA 2  
+
+## ESTRUCTURA DE DATOS 
+
+### Condicional if
+
+Asignar un valor numérico a la variable altura. Para escribir el código if - else if - else, considere las siguientes condiciones relacionadas a la altura medida en kilómetros sobre el nivel del mar:
+
+- Si la altura está entre 0 Km y 10 Km, que se imprima la leyenda “Estás en la Troposfera”,
+
+- Si la altura está entre 10 Km y 50 Km, que se imprima la leyenda “Estás en la Estratosfera”,
+
+- Si la altura está entre 50 Km y 85 Km, que se imprima la leyenda “Estás en la Mesosfera”,
+
+- Si la altura está entre 80 Km y 500 Km, que se imprima la leyenda “Estás en la Termosfera”,
+
+- Si la altura es mayor a los 500 Km, que se imprima la leyenda “Estás en la Exosfera”,
+
+- Si la altura es menor a 0 Km, que se imprima la leyenda “Escribe un valor positivo para la altura”, 
+
+#### - Crea tu variable "altura"
+
+altura= 400
+
+#### - Escribe el condicional para las capas de la atmósfera.
+
+if (altura == 5)
+mensaje =paste("Estás en la Troposfera")
+
+print(mensaje)
+
+
+if (altura <= 50)
+mensaje2 =paste("Estás en la Estratosfera")
+
+print(mensaje2) 
+
+if (altura >= 50)
+mensaje3 =paste("Estás en la Mesosfera")
+
+print(mensaje3)
+
+if (altura <= 200)
+mensaje4 =paste("Estás en la Termosfera")
+
+print(mensaje4)
+
+if (altura > 500)
+mensaje5 =paste("Estás en la Exosfera")
+
+print(mensaje5)
+
+if (altura < 0)
+mensaje6 =paste("Escribe un valor positivo para la altura")
+
+print(mensaje6)
+
+
+
+### Bucle for 
+
+Simule el diseño de la tabla donde guardará los resultados de un experimento, que consta de:
+
+Organismos, tres tipos de especímenes, por ejemplo:
+
+- c(“aullador”, “chichico”, “araña”)
+
+- c(“polipéptido_a”, “polipéptido_b”, “polipéptido_c”)
+
+- c(“roca_a”, “roca_b”, “roca_c”)
+
+Tratamientos, cuatro tipos de tratamientos a cada tipo de especimen, por ejemplo:
+
+- c(“dieta1”, “dieta2”, “dieta3”, “dieta4”)
+
+- c(“enzima1”, “enzima2”, “enzima3”, “enzima4”)
+
+- c(“aleacion1”, “aleacion2”, “aleacion3”, “aleacion4”)
+
+Medidas, realizará 5 tipos de medidas, por ejemplo:
+
+- c(“altura”, “largo”, “masa”, “NroProgenie”, “nroSobrevivientes”)
+
+- c(“NroProteinas”, Estructura”, “TempDenaturacion”, “RutaMetabólica”, “PesoMolecular”)
+
+- c(“Composicion”, “Estructura”, “Resistencia”, “Dureza”, “Porosidad”)
+
+Utilizando el bucle for, arme un dataframe que tenga las columnas “Especimen”, “Tratamiento” y “Medida”. El dataframe debe tener todas las combinaciones posibles de las tres columnas, por ende por lo menos 60 filas.
+
+#### - Crea el dataframe vacío
+d.fv= data.frame()
+
+#### - Crea las variables "Especimen", "Tratamiento" y "Medida" con sus respectivas opciones
+Especimenes=c("polipéptido_a","polipéptido_b","polipéptido_c")
+Tratamiento=c("enzima1","enzima2","enzima3","enzima4")
+Medida=c("NroProteinas", "Estructura", "TempDenaturacion", "RutaMetabólica", "PesoMolecular")
+
+#### - Escribe el código para generar el dataframe utilizando el bucle "for" anidado
+
+for(Esp in Especimenes)
+  for(Trat in Tratamiento)
+    for (Med in Medida)
+    print(paste(Esp, Trat, Med))
+    
+d.fv=d.fv= data.frame()
+
+for(i in 1:length(Especimenes))
+  for(j in 1:length(Tratamiento))
+    for(h in 1:length(Medida))
+    d.fv = rbind(d.fv , c(Especimenes[i], Tratamiento[j], Medida[h]))
+    
+names(d.fv) = c("Especimenes", "Tratamiento", "Medida")
+
+
+str (d.fv)
+
+
+## FUNCIONES 
+
+#### Asigne la data precargada de R "mtcars" a la variable "df_mtcars"
+data("mtcars")
+?mtcars
+head(mtcars, 11)
+
+df_mtcars= data("mtcars")
+
+#### Cree una función "contar_cyl" que cuente el número de veces que divida el número de carros que existe por tipo de "cyl"
+
+contar_cyl <- function(variables) {
+
+}
+
+#### Genere una función que calcule las pendientes de los datos "mpg - hp" y guarde en la variable "pendiente_mpg.hp"
+
+_______________________________________________________________________________
+
+# TAREA 3 
+
+## MANIPULACIÓN DE DATOS 
+Utilizando las librerías RCurl, readr, readxl y data.table cargue los siguientes archivos asignando indetificadores adecuados:
+
+- Busque un archivo tipo .txt o .csv en GitHub (https://github.com) que se relacione a alguna area y que esté asociado al uso de R para su análisis.
+
+- Cargue el archivo “expr_data.txt” de la carpeta data
+
+- Cargue el archivo “SEST17_micro_35755_20191209_CSV.csv” de la carpeta data utilizando fread() y read.csv y compare los tiempos que requieren para cargar el archivo.
+
+- Cargue el archivo “barriosOriginal” desde el url.
+
+- Asigne a un data frame la data precargada de R mpg, puede requerir la librería ggplot2.
+
+### Carga informacion 
+
+
+#### Coloque aquí las librerías
+
+library (readr)
+
+#### Escriba aquí las instrucciones para cargar los archivos. 
+
+* Primero dirigirse al apartado de **envioronment** 
+* Seguidamente, se dirige a **Import Dataset**
+* Dirigirse al apartado de From text (readr)
+* Copiar la **url**  del archivo tipo txt obtenido de github 
+* Importar el archivo 
+ 
+´´´´EJEMPLO´´´´
+
+library(readr)
+transformando_nuestros_datos_data_wrangling <- read_csv("https://martinmontane.github.io/CienciaDeDatosBook/transformando-nuestros-datos-data-wrangling.html")
+
+### Ordenar datos
+
+#### Coloque aquí las librerías
+
+library(tidyr)
+
+#### Escriba aquí las instrucciones para obtener un tidy data.
+* Instalar la library de tidyr 
+
+#### Puede requerir anular datos tipo "NaN" o "NA"
+
+
+### Procesamiento de datos 
+
+Utilice la librería dplyr o data.table con la data de mpg y barriosOriginal:
+Seleccionar select()
+
+* Filtrar filter()
+
+* Ordenar arrange()
+
+* Calcular mutate()
+
+* Agrupar y resumir group_by y summarise()
+
+Genere dos dataframes con diferentes contenidos, pero al menos una columna corresponde a la misma variable y aplique las diferentes formas agregar data de diferentes archivos utilizando la función ..._join().
+
+#### Coloque aquí las librerías
+
+library(dplyr)
+
+
+#### Escriba aquí las instrucciones para procesar la data.
+
+Rdata <- readRDS("~/R/win-library/4.1/dplyr/data/Rdata.rds")
+
+
+#### Escriba aquí las instrucciones para usar la función ..._join()
+
+* En primer lugar, se deben crear dos data frames 
+* Seguidamente, crear una funcion sample 
+* Luego se van a establecer argumentos como TRUE para unir los data frames
+* Finalmente, corremos la función join() ya sea: 
+  - inner_join()
+  - left_join()
+  - right_join()
+  - full_join()
+
